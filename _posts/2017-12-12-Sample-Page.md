@@ -1,6 +1,6 @@
 ---
 title: Sample Page
-published: true
+layout: post
 ---
 
 Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
