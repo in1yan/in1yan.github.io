@@ -8,6 +8,7 @@
 $body-background: $cod-grey !default;
 $body-foreground: $gallery !default;
 $header: $conifer !default;
+$footer: $conifer !default;
 $blockquote-color: $silver-chalice !default;
 $blockquote-border: $dove-grey !default;
 
@@ -60,6 +61,13 @@ footer {
   border-top: 1px dashed $conifer; //header;
   padding: 20px;
   margin: 0 0 40px 0;
+}
+.footer-links {
+  text-align: center;
+}
+
+.footer-link {
+  display: inline;
 }
 .header-links {
   text-align: center;
