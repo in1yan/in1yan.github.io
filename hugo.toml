@@ -7,6 +7,8 @@ pagination.pagerSize = 5
 
 # Required for Chroma and the custom syntax highlighting.
 [markup.highlight]
+  style="monokai"
+  # linenos="true"
   noClasses = false
 
 [params]
@@ -80,7 +82,7 @@ pagination.pagerSize = 5
       subtitle = "A simple, retro theme for Hugo"
       owner = "iniyan"
       keywords = ""
-      copyright = ""
+      copyright = "iniyan"
       menuMore = "Show more"
       readMore = "Read more"
       readOtherPosts = "Read other posts"
@@ -92,7 +94,7 @@ pagination.pagerSize = 5
       words = "words"
 
       [languages.en.params.logo]
-        logoText = "@inyan>>"
+        logoText = "iniyan ://"
         logoHomeLink = "/"
 
       [languages.en.menu]

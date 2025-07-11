@@ -58,7 +58,7 @@ So yeah, **linked lists are powerful, but not always the best choice.**
 
 Alright, enough theory. Let’s get our hands dirty with some code. Here’s a basic implementation of a singly linked list in C:
 
-```c
+{{<code language="c" title="Implementation" open="true" linenos="true">}}
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -137,7 +137,7 @@ int main() {
 
   return 0;
 }
-```
+{{</code>}}
 
 
 That’s it for now. If you made it this far, Thank you.
