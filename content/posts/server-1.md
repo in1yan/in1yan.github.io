@@ -14,6 +14,8 @@ hideComments = false
 +++
 
 # What Could Possibly Go Wrong?
+![how-hard](https://github.com/user-attachments/assets/26001c07-d5ff-4500-b202-71529cdfd5d3)
+{{< image src="https://github.com/user-attachments/assets/26001c07-d5ff-4500-b202-71529cdfd5d3" alt="meme" position="center" style="border-radius: 8px;" >}}
 
 I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?
 
