@@ -14,13 +14,8 @@ hideComments = false
 +++
 
 # What Could Possibly Go Wrong?
-<<<<<<< HEAD
 {{< image src="https://media1.tenor.com/m/8niR84ZU5G4AAAAC/how-hard.gif" alt="how hard" position="center" style="border-radius: 8px;" >}}
-=======
-![how-hard](https://github.com/user-attachments/assets/26001c07-d5ff-4500-b202-71529cdfd5d3)
-{{< image src="https://github.com/user-attachments/assets/26001c07-d5ff-4500-b202-71529cdfd5d3" alt="meme" position="center" style="border-radius: 8px;" >}}
 
->>>>>>> e3a7a3a746457233f48cf7e8c51db79727192c41
 I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?
 
 <!--more-->
@@ -294,6 +289,6 @@ I tested the server with my hugo blog by pointing the root directory to `./publi
 The full code can be found [here](https://github.com/in1yan/pop-corn-server).
 
 
-{{< image src="https://d2h58dsjpbzmve.cloudfront.net/5p7r3%2Fpreview%2F69039493%2Fmain_large.gif?response-content-disposition=inline%3Bfilename%3D%22main_large.gif%22%3B&response-content-type=image%2Fgif&Expires=1752558294&Signature=dm7OTbcHh2-IjkdxHZuq~XGAj84FrmJK6V8OBxeNKJ6e1ajmKl3RyB7TBdh7pU5qZHjeMjjVMN3FQRjW2kv~jS~mFKjXXtVEz-sDPktj~PWDu1AMq7OfSRvx94QzGvGgMVwxDs8bYRLn2WU1F5PUuaOCw0pDdBQ-n16U0KV3lKo0FTWIA9iLPIbdWGjD9wVPrFCSFyqCxc-LhQl-JkydwYTMjsxZ1~NXaUyOgroLphktD8WStXVLVfrv4zO-dpzLawF9omhnMeP0ch-jiuyfYU69YRNCzdBZtyn7AVf06E6Ge9MKMXkaXOSSyQCkcJ1V0tlUFbcCFJP3KwXtOfi9WQ__&Key-Pair-Id=APKAJT5WQLLEOADKLHBQ" alt="how hard" position="center" style="border-radius: 8px;" >}}
+{{< image src="https://s14.gifyu.com/images/bKlzy.gif" alt="how hard" position="center" style="border-radius: 8px;" >}}
 
 
