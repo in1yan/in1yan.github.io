@@ -14,7 +14,7 @@ hideComments = false
 +++
 
 # What Could Possibly Go Wrong?
-
+{{< image src="https://media1.tenor.com/m/8niR84ZU5G4AAAAC/how-hard.gif" alt="how hard" position="center" style="border-radius: 8px;" >}}
 I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?
 
 <!--more-->
@@ -214,7 +214,11 @@ Then the server loop listens for incoming connections and parse the first line o
   The handle_client function reads the incoming request, parses it to figure out which file is being requested, and then serves that
    file. If the file doesn't exist, it sends a 404 Not Found error. This is the core logic of the server. It's simple, but it gets
   the job done.
-    This is where I spent more than 2 hrs on a segmentation fault then with the help of gdb I found out that I've been trying to close a socket connection that has been previously closed.
+    
+This is where I spent more than 2 hrs on a segmentation fault then with the help of gdb I found out that I've been trying to close a socket connection that has been previously closed.
+
+{{< image src="https://media1.tenor.com/m/rEd35Rfq3m4AAAAd/cat-work-in-progress.gif" alt="how hard" position="center" style="border-radius: 8px;" >}}
+
 # The Router
 
  The routing logic is handled by the parse_file function. It takes the requested path and the root directory, and then it tries to
@@ -284,5 +288,6 @@ I tested the server with my hugo blog by pointing the root directory to `./publi
 The full code can be found [here](https://github.com/in1yan/pop-corn-server).
 
 
+{{< image src="https://d2h58dsjpbzmve.cloudfront.net/5p7r3%2Fpreview%2F69039493%2Fmain_large.gif?response-content-disposition=inline%3Bfilename%3D%22main_large.gif%22%3B&response-content-type=image%2Fgif&Expires=1752558294&Signature=dm7OTbcHh2-IjkdxHZuq~XGAj84FrmJK6V8OBxeNKJ6e1ajmKl3RyB7TBdh7pU5qZHjeMjjVMN3FQRjW2kv~jS~mFKjXXtVEz-sDPktj~PWDu1AMq7OfSRvx94QzGvGgMVwxDs8bYRLn2WU1F5PUuaOCw0pDdBQ-n16U0KV3lKo0FTWIA9iLPIbdWGjD9wVPrFCSFyqCxc-LhQl-JkydwYTMjsxZ1~NXaUyOgroLphktD8WStXVLVfrv4zO-dpzLawF9omhnMeP0ch-jiuyfYU69YRNCzdBZtyn7AVf06E6Ge9MKMXkaXOSSyQCkcJ1V0tlUFbcCFJP3KwXtOfi9WQ__&Key-Pair-Id=APKAJT5WQLLEOADKLHBQ" alt="how hard" position="center" style="border-radius: 8px;" >}}
 
 

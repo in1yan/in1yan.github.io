@@ -9,11 +9,11 @@
     <lastBuildDate>Fri, 11 Jul 2025 02:39:59 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/tags/code/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>I Built a Web Server in C and Hosted My Hugo Blog on It — Chaos Ensued</title>
+      <title>I Built a Web Server in C — Chaos Ensued</title>
       <link>//localhost:1313/posts/server-1/</link>
       <pubDate>Fri, 11 Jul 2025 02:39:59 +0000</pubDate>
       <guid>//localhost:1313/posts/server-1/</guid>
-      <description>&lt;h1 id=&#34;hello-world&#34;&gt;Hello World&lt;/h1&gt;</description>
+      <description>&lt;h1 id=&#34;what-could-possibly-go-wrong&#34;&gt;What Could Possibly Go Wrong?&lt;/h1&gt;&#xA;&lt;p&gt;&#xA;&lt;img src=&#34;https://media1.tenor.com/m/8niR84ZU5G4AAAAC/how-hard.gif&#34;  alt=&#34;how hard&#34;  class=&#34;center&#34;  style=&#34;border-radius: 8px;&#34;    /&gt;&#xA;&#xA;&#xA;I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linked List</title>
