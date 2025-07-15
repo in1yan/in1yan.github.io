@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>I Built a Web Server in C — Chaos Ensued :: HELLO</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="What Could Possibly Go Wrong? I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?
+" />
+<meta name="keywords" content=", " />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="//localhost:1313/posts/server-1/" />
+
+
+
+
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/terminal.min.5a6b22edb136f5baaec84784087400495ef390d0e5f71d72c7dcac048d78422e.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="//localhost:1313/favicon.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="I Built a Web Server in C — Chaos Ensued">
+<meta property="og:description" content="What Could Possibly Go Wrong? I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?
+" />
+<meta property="og:url" content="//localhost:1313/posts/server-1/" />
+<meta property="og:site_name" content="HELLO" />
+
+  
+  
+  <meta property="og:image" content="//localhost:1313/">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2025-07-11 02:39:59 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    iniyan ://
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="https://github.com/in1yan">&lt;/&gt; me</a></li>
+        
+      
+        
+          <li><a href="/pages/about">About</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="https://github.com/in1yan" >&lt;/&gt; me</a></li>
+        
+      
+        
+          <li><a href="/pages/about" >About</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/server-1/">I Built a Web Server in C — Chaos Ensued</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-07-11</time><span class="post-author">iniyan</span><span class="post-reading-time">7 min read (1327 words)</span></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="//localhost:1313/tags/code/">code</a>&nbsp;
+      
+      #<a href="//localhost:1313/tags/networking/">networking</a>&nbsp;
+      
+      #<a href="//localhost:1313/tags/scratch/">scratch</a>&nbsp;
+      
+      #<a href="//localhost:1313/tags/c/">c</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="what-could-possibly-go-wrong">What Could Possibly Go Wrong?<a href="#what-could-possibly-go-wrong" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?</p>
+<p>At first, I considered writing it in Python — but then I realized chads build hobby projects in C. Who needs comfort when you can wrestle with sockets, pointers, and the majestic absence of real string handling?</p>
+<p>This project took me about 3 days of tinkering, trial and error, intense Googling and threatening chatgpt. But it’s been one of the most fun things I’ve built in a while.</p>
+<h1 id="the-idea">The Idea<a href="#the-idea" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>Web servers or the whole internet works by sending and recieving requests.
+When a browser asks for a page like <code>/about</code> it sends somthing like:</p>
+<pre tabindex="0"><code>GET /about HTTP/1.1
+</code></pre><p>That&rsquo;s the page requested by the browser I need to parse this request and determine wich page to
+return as response. In complex servers it is handled by routing logics, templating engines, middleware, etc. but I&rsquo;m just implementing a simple <strong>file based routing</strong>.</p>
+<p>So the logic is simple : each route should map to a folder, and that folder should have an <code>index.html</code>.If a browser request /about, my server will look for <code>about/index.html</code> and serve the requested file with a set of response headers like this:</p>
+<pre tabindex="0"><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 2204
+Connection: close
+</code></pre><p>Then the browser parse this header and render it based on the <strong>Content-Type</strong> (mime type of the file).
+If It isn&rsquo;t for these headers then its just a tcp server and client sending and recieving strings.</p>
+<h1 id="sockets-101">Sockets 101<a href="#sockets-101" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>To get anything working on the internet - whether it&rsquo;s a website, chat app or a game it needs sockets .</p>
+<p>In my case I wanted a server that does this three thing.</p>
+<ol>
+<li>Create a socket that listens on a specific port</li>
+<li>Accept incoming connections from browsers.</li>
+<li>Read the request, figure out what&rsquo;s being asked for, and send back the file.
+This is the lifecycle of the server.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">socket</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">create</span> <span class="n">a</span> <span class="n">socket</span>
+</span></span><span class="line"><span class="cl"><span class="nf">bind</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">assign</span> <span class="n">my</span> <span class="n">socket</span> <span class="n">to</span> <span class="n">a</span> <span class="n">port</span>
+</span></span><span class="line"><span class="cl"><span class="nf">listen</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">incoming</span> <span class="n">connections</span> 
+</span></span><span class="line"><span class="cl"><span class="nf">accep</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">accept</span> <span class="n">a</span> <span class="n">connection</span> <span class="n">from</span> <span class="n">the</span> <span class="n">client</span> 
+</span></span><span class="line"><span class="cl"><span class="nf">recv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">read</span> <span class="n">the</span> <span class="n">client</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">response</span> 
+</span></span><span class="line"><span class="cl"><span class="nf">send</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">send</span> <span class="n">back</span> <span class="n">a</span> <span class="n">response</span> 
+</span></span><span class="line"><span class="cl"><span class="nf">close</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">close</span> <span class="n">the</span> <span class="n">connection</span>
+</span></span></code></pre></div><p>In c sockets are handled by a file descriptor you can simple communicate with the internet sockets just like reading and writing to a file . Unless if you want to hate your life.
+Besides these core functions, you also deal with a bunch of structs to handle IP addresses, port numbers, and byte-order conversions. It&rsquo;s like trying to talk to the internet in caveman — but more fun.
+If you want to learn more about networking check out this <a href="https://beej.us/guide/bgnet0/">legendary guide</a>.</p>
+<h1 id="the-server">The server<a href="#the-server" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>So after digging the sockets. I started writing the server.</p>
+
+
+
+<details class="collapsable-code" >
+    <summary title="Click to interact"><span class="collapsable-code__title">main</span></summary>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Configs</span> <span class="o">*</span><span class="n">config</span> <span class="o">=</span><span class="nf">parse_config</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">strcpy</span><span class="p">(</span><span class="n">PORT</span><span class="p">,</span> <span class="n">config</span><span class="o">-&gt;</span><span class="n">port</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">BACKLOG</span> <span class="o">=</span> <span class="n">config</span><span class="o">-&gt;</span><span class="n">backlog</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">sockaddr_storage</span> <span class="n">their_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">new_fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">socklen_t</span> <span class="n">sin_size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">numbytes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// socket creation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="nf">setup_socket</span><span class="p">(</span><span class="n">PORT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">sockfd</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;server: failed to bind&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="nf">listen</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">BACKLOG</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">perror</span><span class="p">(</span><span class="s">&#34;listen&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Waiting for connections...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// start listening to connections
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="n">sin_size</span> <span class="o">=</span> <span class="k">sizeof</span> <span class="n">their_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">new_fd</span> <span class="o">=</span> <span class="nf">accept</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">their_addr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sin_size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">new_fd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">perror</span><span class="p">(</span><span class="s">&#34;accept&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ThreadArgs</span> <span class="o">*</span><span class="n">args</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">ThreadArgs</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">		<span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span> <span class="o">=</span> <span class="n">new_fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">args</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">config</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">inet_ntop</span><span class="p">(</span><span class="n">their_addr</span><span class="p">.</span><span class="n">ss_family</span><span class="p">,</span> <span class="nf">get_in_addr</span><span class="p">((</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">their_addr</span><span class="p">),</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span>  <span class="n">args</span><span class="o">-&gt;</span><span class="n">addr</span> <span class="p">));</span> <span class="c1">// convert network address to presentable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">thrd_t</span> <span class="n">t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span> <span class="nf">thrd_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">t</span><span class="p">,</span> <span class="n">handle_client</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="n">thrd_success</span> <span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">perror</span><span class="p">(</span><span class="s">&#34;Failed to create a thread&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">send_error</span><span class="p">(</span><span class="n">new_fd</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">free</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">thrd_detach</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></details>
+
+<p>I start by parsing a json file containing configurations for the server like the port, number of back logs and the root directory(the directory from which the files are served).Well parsing the JSON files were
+pretty simple then I thought. Thanks to <a href="https://github.com/DaveGamble/cJSON">cJSON</a>.
+Then I create a socket and bind it to the port specified in the configuration and set it up for listening mode.</p>
+<p>here&rsquo;s the <code>setup_socket</code> function code if you want to look at it:
+
+
+
+<details class="collapsable-code" >
+    <summary title="Click to interact"><span class="collapsable-code__title">setup socket</span></summary>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">setup_socket</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">PORT</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">sockfd</span><span class="o">=-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">addrinfo</span> <span class="n">hints</span><span class="p">,</span> <span class="o">*</span><span class="n">servinfo</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">yes</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">rv</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">hints</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">hints</span><span class="p">.</span><span class="n">ai_family</span> <span class="o">=</span> <span class="n">AF_UNSPEC</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">hints</span><span class="p">.</span><span class="n">ai_flags</span> <span class="o">=</span> <span class="n">AI_PASSIVE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">hints</span><span class="p">.</span><span class="n">ai_socktype</span> <span class="o">=</span> <span class="n">SOCK_STREAM</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">((</span><span class="n">rv</span> <span class="o">=</span> <span class="nf">getaddrinfo</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">PORT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">hints</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">servinfo</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;getaddrinfo : %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">gai_strerror</span><span class="p">(</span><span class="n">rv</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">servinfo</span><span class="p">;</span> <span class="n">p</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">;</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">ai_next</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">((</span><span class="n">sockfd</span> <span class="o">=</span> <span class="nf">socket</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">ai_family</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">ai_socktype</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">ai_protocol</span><span class="p">))</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">perror</span><span class="p">(</span><span class="s">&#34;server: socket&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="nf">setsockopt</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">yes</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">perror</span><span class="p">(</span><span class="s">&#34;setsockopt&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">((</span><span class="nf">bind</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">ai_addr</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">ai_addrlen</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">close</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">perror</span><span class="p">(</span><span class="s">&#34;server: bind&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">freeaddrinfo</span><span class="p">(</span><span class="n">servinfo</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">sockfd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></details>
+</p>
+<p>Then the server loop listens for incoming connections and parse the first line of the request header to determine the requested route, request method, and protocol. But a practical server will handle more header data like cookies, connection type and so on.</p>
+<p>For each connection, the server creates a new thread to handle the client&rsquo;s request. This is where the handle_client function
+comes in.</p>
+
+
+
+<details class="collapsable-code" >
+    <summary title="Click to interact"><span class="collapsable-code__title">handle_client</span></summary>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="kt">int</span> <span class="nf">handle_client</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ThreadArgs</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">ThreadArgs</span> <span class="p">)</span><span class="n">arg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="o">*</span><span class="n">root</span> <span class="o">=</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="nf">get_request</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">request</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;[%s] Failed to get request</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">addr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">send_error</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">close</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">free</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// parse the request to determine the html file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">HeaderData</span> <span class="o">*</span><span class="n">parsed_request</span> <span class="o">=</span> <span class="nf">parse_request</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">parsed_request</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;[%s] Failed to parse request</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">addr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">send_error</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">close</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">free</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="n">header</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;[ %s ] --&gt; %s %s %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">args</span><span class="o">-&gt;</span><span class="n">addr</span><span class="p">,</span> <span class="n">parsed_request</span><span class="o">-&gt;</span><span class="n">method</span><span class="p">,</span>  <span class="n">parsed_request</span><span class="o">-&gt;</span><span class="n">path</span><span class="p">,</span> <span class="n">parsed_request</span><span class="o">-&gt;</span><span class="n">protocol</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// setup the response header
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">FileData</span> <span class="o">*</span><span class="n">response_header_data</span> <span class="o">=</span> <span class="nf">parse_file</span><span class="p">(</span><span class="n">parsed_request</span><span class="o">-&gt;</span><span class="n">path</span><span class="p">,</span> <span class="n">root</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">response_header_data</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">send_error</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">,</span> <span class="mi">404</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">close</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">free</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">free</span><span class="p">(</span><span class="n">parsed_request</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FILE</span> <span class="o">*</span><span class="n">template</span> <span class="o">=</span> <span class="n">response_header_data</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">send_response</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">response_header_data</span><span class="o">-&gt;</span><span class="n">content_type</span><span class="p">,</span> <span class="n">response_header_data</span><span class="o">-&gt;</span><span class="n">content_length</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">render_html</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">,</span> <span class="n">template</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">shutdown</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">,</span> <span class="n">SHUT_WR</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fclose</span><span class="p">(</span><span class="n">template</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">close</span><span class="p">(</span><span class="n">args</span><span class="o">-&gt;</span><span class="n">sock_fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">free</span><span class="p">(</span><span class="n">parsed_request</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">free</span><span class="p">(</span><span class="n">response_header_data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">free</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div></details>
+
+<p>The handle_client function reads the incoming request, parses it to figure out which file is being requested, and then serves that
+file. If the file doesn&rsquo;t exist, it sends a 404 Not Found error. This is the core logic of the server. It&rsquo;s simple, but it gets
+the job done.
+This is where I spent more than 2 hrs on a segmentation fault then with the help of gdb I found out that I&rsquo;ve been trying to close a socket connection that has been previously closed.</p>
+<h1 id="the-router">The Router<a href="#the-router" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>The routing logic is handled by the parse_file function. It takes the requested path and the root directory, and then it tries to
+find the corresponding file.</p>
+
+
+
+<details class="collapsable-code" >
+    <summary title="Click to interact"><span class="collapsable-code__title">parse_file</span></summary>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="n">FileData</span> <span class="o">*</span><span class="nf">parse_file</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">file_name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nf">strstr</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s">&#34;..&#34;</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">size_t</span> <span class="n">path_len</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="o">+</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="o">+</span> <span class="nf">strlen</span><span class="p">(</span><span class="s">&#34;/index.html&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="o">*</span><span class="n">file_path</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="n">path_len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">file_path</span><span class="p">)</span> <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nf">snprintf</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">path_len</span><span class="p">,</span> <span class="s">&#34;%s%s&#34;</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">file_name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FILE</span> <span class="o">*</span><span class="n">fd</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="o">*</span><span class="n">ext</span> <span class="o">=</span> <span class="nf">strrchr</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="sc">&#39;.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ext</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">snprintf</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">path_len</span><span class="p">,</span> <span class="s">&#34;%s%s/index.html&#34;</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">file_name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">fd</span> <span class="o">=</span> <span class="nf">fopen</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fd</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">free</span><span class="p">(</span><span class="n">file_path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ext</span> <span class="o">=</span> <span class="nf">strrchr</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="sc">&#39;.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Serving: %s  ext: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">ext</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FileData</span> <span class="o">*</span><span class="n">result</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">FileData</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">fclose</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">free</span><span class="p">(</span><span class="n">file_path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nf">fseek</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span><span class="o">-&gt;</span><span class="n">content_length</span> <span class="o">=</span> <span class="nf">ftell</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fseek</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="o">*</span><span class="n">mime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ext</span><span class="p">)</span> <span class="n">mime</span> <span class="o">=</span> <span class="s">&#34;application/octet-stream&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s">&#34;.html&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">mime</span> <span class="o">=</span> <span class="s">&#34;text/html&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s">&#34;.css&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">mime</span> <span class="o">=</span> <span class="s">&#34;text/css&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s">&#34;.js&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">mime</span> <span class="o">=</span> <span class="s">&#34;application/javascript&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s">&#34;.jpg&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="nf">strcmp</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s">&#34;.jpeg&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">mime</span> <span class="o">=</span> <span class="s">&#34;image/jpeg&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s">&#34;.png&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">mime</span> <span class="o">=</span> <span class="s">&#34;image/png&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s">&#34;.webp&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">mime</span> <span class="o">=</span> <span class="s">&#34;image/webp&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="s">&#34;.gif&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">mime</span> <span class="o">=</span> <span class="s">&#34;image/gif&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="n">mime</span> <span class="o">=</span> <span class="s">&#34;application/octet-stream&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">result</span><span class="o">-&gt;</span><span class="n">content_type</span> <span class="o">=</span> <span class="n">mime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">free</span><span class="p">(</span><span class="n">file_path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></div></details>
+
+<p>This function also handles a basic security check to prevent directory traversal attacks, but it doesn&rsquo;t work the way it should it need some debugging. It also determines the Content-Type of
+the file based on its extension, which is important for the browser to render the file correctly. But some times the browser will try to determine the type itself if it is not included in the response header.</p>
+<h1 id="conclusion">Conclusion<a href="#conclusion" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>I tested the server with my hugo blog by pointing the root directory to <code>./public</code> it works great. But it is not secure for deployments .
+The full code can be found <a href="https://github.com/in1yan/pop-corn-server">here</a>.</p>
+      </div></div>
+
+  
+    
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h">Read other posts</span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
+    
+    
+    
+      <a href="//localhost:1313/posts/linked-list/" class="button inline next">
+         [<span class="button__text">Linked List</span>] &gt;
+      </a>
+    
+  </div>
+</div>
+
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>iniyan © 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      
+      </div>
+  </div>
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c0ce02051d59423bab60191117bf23f7"}'></script>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c0ce02051d59423bab60191117bf23f7"}'></script>
+
+
+
+
+  
+</div>
+
+</body>
+</html>
