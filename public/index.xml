@@ -9,7 +9,7 @@
     <lastBuildDate>Fri, 11 Jul 2025 02:39:59 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>I Built a Web Server in C — Chaos Ensued</title>
+      <title>I Built a Web Server in C</title>
       <link>//localhost:1313/posts/server-1/</link>
       <pubDate>Fri, 11 Jul 2025 02:39:59 +0000</pubDate>
       <guid>//localhost:1313/posts/server-1/</guid>
