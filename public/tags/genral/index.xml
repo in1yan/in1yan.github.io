@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Genral on HELLO</title>
-    <link>//localhost:1313/tags/genral/</link>
+    <link>/tags/genral/</link>
     <description>Recent content in Genral on HELLO</description>
     <generator>Hugo</generator>
-    <language>en</language>
+    <language>en-us</language>
     <lastBuildDate>Sat, 24 Aug 2024 04:58:44 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/genral/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/genral/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World</title>
-      <link>//localhost:1313/posts/hello-world/</link>
+      <link>/posts/hello-world/</link>
       <pubDate>Sat, 24 Aug 2024 04:58:44 +0000</pubDate>
-      <guid>//localhost:1313/posts/hello-world/</guid>
+      <guid>/posts/hello-world/</guid>
       <description>&lt;p&gt;This is my first blog . I&amp;rsquo;m in my college first year and watched &lt;code&gt;The Social Network&lt;/code&gt;  and got the idea of starting a blog this was also inspired by my college seniors , so here I am .I&amp;rsquo;m starting this blog in a retrospective way so that I know how clueless I&amp;rsquo;m in my early days .&lt;/p&gt;</description>
     </item>
   </channel>

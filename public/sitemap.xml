@@ -2,54 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/tags/c/</loc>
+    <loc>/tags/c/</loc>
     <lastmod>2025-07-11T02:39:59+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/code/</loc>
+    <loc>/tags/code/</loc>
     <lastmod>2025-07-11T02:39:59+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/</loc>
+    <loc>/</loc>
     <lastmod>2025-07-11T02:39:59+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/server-1/</loc>
+    <loc>/posts/server-1/</loc>
     <lastmod>2025-07-11T02:39:59+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/networking/</loc>
+    <loc>/tags/networking/</loc>
     <lastmod>2025-07-11T02:39:59+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2025-07-11T02:39:59+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/scratch/</loc>
+    <loc>/tags/scratch/</loc>
     <lastmod>2025-07-11T02:39:59+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2025-07-11T02:39:59+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/pages/about/</loc>
+    <loc>/pages/about/</loc>
     <lastmod>2025-06-15T05:34:33+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/pages/</loc>
+    <loc>/pages/</loc>
     <lastmod>2025-06-15T05:34:33+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/ds/</loc>
+    <loc>/tags/ds/</loc>
     <lastmod>2025-03-17T05:03:37+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/linked-list/</loc>
+    <loc>/posts/linked-list/</loc>
     <lastmod>2025-03-17T05:03:37+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/linked-list/</loc>
+    <loc>/tags/linked-list/</loc>
     <lastmod>2025-03-17T05:03:37+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/genral/</loc>
+    <loc>/tags/genral/</loc>
     <lastmod>2024-08-24T04:58:44+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/hello-world/</loc>
+    <loc>/posts/hello-world/</loc>
     <lastmod>2024-08-24T04:58:44+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/lame/</loc>
+    <loc>/tags/lame/</loc>
     <lastmod>2024-08-24T04:58:44+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>/categories/</loc>
   </url>
 </urlset>

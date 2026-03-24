@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HELLO</title>
-    <link>//localhost:1313/</link>
+    <link>/</link>
     <description>Recent content on HELLO</description>
     <generator>Hugo</generator>
-    <language>en</language>
+    <language>en-us</language>
     <lastBuildDate>Fri, 11 Jul 2025 02:39:59 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>I Built a Web Server in C</title>
-      <link>//localhost:1313/posts/server-1/</link>
+      <link>/posts/server-1/</link>
       <pubDate>Fri, 11 Jul 2025 02:39:59 +0000</pubDate>
-      <guid>//localhost:1313/posts/server-1/</guid>
-      <description>&lt;h1 id=&#34;what-could-possibly-go-wrong&#34;&gt;What Could Possibly Go Wrong?&lt;/h1&gt;&#xA;&#xA;&lt;img src=&#34;https://media1.tenor.com/m/8niR84ZU5G4AAAAC/how-hard.gif&#34;  alt=&#34;how hard&#34;  class=&#34;center&#34;  style=&#34;border-radius: 8px;&#34;    /&gt;&#xA;&#xA;&#xA;&lt;p&gt;I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?&lt;/p&gt;</description>
+      <guid>/posts/server-1/</guid>
+      <description>&lt;h1 id=&#34;what-could-possibly-go-wrong&#34;&gt;What Could Possibly Go Wrong?&lt;/h1&gt;&#xA;&#xD;&#xA;&lt;img src=&#34;https://media1.tenor.com/m/8niR84ZU5G4AAAAC/how-hard.gif&#34;  alt=&#34;how hard&#34;  class=&#34;center&#34;  style=&#34;border-radius: 8px;&#34;    /&gt;&#xD;&#xA;&#xD;&#xA;&#xA;&lt;p&gt;I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?&lt;/p&gt;</description>
     </item>
     <item>
       <title>About</title>
-      <link>//localhost:1313/pages/about/</link>
+      <link>/pages/about/</link>
       <pubDate>Sun, 15 Jun 2025 05:34:33 +0000</pubDate>
-      <guid>//localhost:1313/pages/about/</guid>
+      <guid>/pages/about/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a Computer Science and Engineering student at REC, Chennai. Programming is my hobby, and I have experience with Python, the Flask framework, and a bit of Go, C, and C++.&lt;/p&gt;&#xA;&lt;h3 id=&#34;contact&#34;&gt;Contact&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;mailto:viniyan563@gmail.com&#34;&gt;viniyan563@gmail.com&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linked List</title>
-      <link>//localhost:1313/posts/linked-list/</link>
+      <link>/posts/linked-list/</link>
       <pubDate>Mon, 17 Mar 2025 05:03:37 +0000</pubDate>
-      <guid>//localhost:1313/posts/linked-list/</guid>
+      <guid>/posts/linked-list/</guid>
       <description>&lt;p&gt;Here I am 👋, it&amp;rsquo;s been 5 months or so since i wrote my first blog and this is my second.&#xA;Yeah that&amp;rsquo;s my level of productivity 😶‍🌫️.&#xA;In my second semester I have &lt;strong&gt;data structures&lt;/strong&gt; which to me it is hard to grasp, at least these linked lists. So, in this blog I&amp;rsquo;m going deep into the linked lists (not so deep).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hello World</title>
-      <link>//localhost:1313/posts/hello-world/</link>
+      <link>/posts/hello-world/</link>
       <pubDate>Sat, 24 Aug 2024 04:58:44 +0000</pubDate>
-      <guid>//localhost:1313/posts/hello-world/</guid>
+      <guid>/posts/hello-world/</guid>
       <description>&lt;p&gt;This is my first blog . I&amp;rsquo;m in my college first year and watched &lt;code&gt;The Social Network&lt;/code&gt;  and got the idea of starting a blog this was also inspired by my college seniors , so here I am .I&amp;rsquo;m starting this blog in a retrospective way so that I know how clueless I&amp;rsquo;m in my early days .&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on HELLO</title>
-    <link>//localhost:1313/tags/c/</link>
+    <link>/tags/c/</link>
     <description>Recent content in C on HELLO</description>
     <generator>Hugo</generator>
-    <language>en</language>
+    <language>en-us</language>
     <lastBuildDate>Fri, 11 Jul 2025 02:39:59 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>I Built a Web Server in C — Chaos Ensued</title>
-      <link>//localhost:1313/posts/server-1/</link>
+      <title>I Built a Web Server in C</title>
+      <link>/posts/server-1/</link>
       <pubDate>Fri, 11 Jul 2025 02:39:59 +0000</pubDate>
-      <guid>//localhost:1313/posts/server-1/</guid>
-      <description>&lt;h1 id=&#34;what-could-possibly-go-wrong&#34;&gt;What Could Possibly Go Wrong?&lt;/h1&gt;&#xA;&#xA;&lt;img src=&#34;https://media1.tenor.com/m/8niR84ZU5G4AAAAC/how-hard.gif&#34;  alt=&#34;how hard&#34;  class=&#34;center&#34;  style=&#34;border-radius: 8px;&#34;    /&gt;&#xA;&#xA;&#xA;&lt;p&gt;I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?&lt;/p&gt;</description>
+      <guid>/posts/server-1/</guid>
+      <description>&lt;h1 id=&#34;what-could-possibly-go-wrong&#34;&gt;What Could Possibly Go Wrong?&lt;/h1&gt;&#xA;&#xD;&#xA;&lt;img src=&#34;https://media1.tenor.com/m/8niR84ZU5G4AAAAC/how-hard.gif&#34;  alt=&#34;how hard&#34;  class=&#34;center&#34;  style=&#34;border-radius: 8px;&#34;    /&gt;&#xD;&#xA;&#xD;&#xA;&#xA;&lt;p&gt;I had a week of free time after my end semester. So instead of grinding games and binge-watching movies or shows, I decided: Why not build a web server?&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
